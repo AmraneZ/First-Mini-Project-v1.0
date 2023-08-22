@@ -1,7 +1,7 @@
 import requests
 
-#retrieve the api ke from a file 
-apikey = open("..\\..\\junk\\weather.txt").read()
+#retrieve the api key from a file 
+apikey = open("path_to_apikey.txt").read()
 
 #city location 
 q = str(input("enter your city to view the weather:"))
@@ -23,8 +23,8 @@ weather_api = f"http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/{ci
 
 weather_url = weather_api + f"apikey={apikey}"
 weather_response = requests.get(weather_url)
-print(weather_url)
 
+#print your response, you can specify what you want from the output json file : weather
 if weather_response.status_code == 200: 
     weather = weather_response.json()
     date = weather[0]['DateTime'][0:10:]
